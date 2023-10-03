@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "prefect-test"
+version = "0.1.0"
+description = ""
+authors = ["canutera <67880597+canutera@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+prefect = "^2.13.4"
+selenium = "^4.13.0"
+ipykernel = "^6.25.2"
+pandas = "^2.1.1"
+lxml = "^4.9.3"
+pyautogui = "^0.9.54"
+pywinauto = "^0.6.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,47 @@
+###
+### A complete description of a Prefect Deployment for flow 'get-repo-info'
+###
+name: my-first-flow
+description: null
+version: 40fe660ffa571750754e14c560b85146
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: null
+tags: []
+parameters: {}
+schedule: null
+is_schedule_active: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: get-repo-info
+manifest_path: null
+storage: null
+path: C:\Git\prefect-test
+entrypoint: src\repo_info.py:get_repo_info
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    repo_name:
+      title: repo_name
+      default: PrefectHQ/prefect
+      position: 0
+      type: string
+  required: null
+  definitions: null
+timestamp: '2023-10-01T21:46:49.461363+00:00'
+triggers: []
+enforce_parameter_schema: null
