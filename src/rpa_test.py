@@ -34,16 +34,17 @@ def write_to_notepad(df:pd.DataFrame):
     print('typing...')
     pyautogui.typewrite(df.head(3).to_string())
     sleep(8)
+    return True
     
 @task
-def delete_if_exists(file:str=r"C:\Users\gabri\Documents\test.txt"):
+def delete_if_exists(res= None, file:str=r"C:\Users\gabri\Documents\test.txt"):
     if os.path.isfile(file):
         os.remove(file)
         return 'File Deleted!' 
     return 'File did not exist...'
 
 @task
-def save_notepad():
+def save_notepad(res=None):
     print('saving notepad file in documents folder...')
     window = pygetwindow.getWindowsWithTitle('Notepad')[-1]
     window.maximize()
@@ -58,16 +59,23 @@ def save_notepad():
     sleep(3)
     window.close()
     sleep(1)
+    return True
+
+@task
+def get_shape(res=None):
+    a = pd.read_fwf(rf"C:\Users\{os.getlogin()}\Documents\test.txt")
+    print('shape:', a.shape)
+    print('columns:', len(a.columns))
 
 @flow(log_prints=True)
 def main():
     df = get_borders_list()
-    write_to_notepad(df)
-    delete_if_exists()
-    save_notepad()
-    a = pd.read_fwf(rf"C:\Users\{os.getlogin()}\Documents\test.txt")
-    print('shape:', a.shape)
-    print('columns:', len(a.columns))
+    res = write_to_notepad(df)
+    res = delete_if_exists(res=res)
+    res = save_notepad(res=res)
+    res = get_shape(res=res)
+    return True
+    
 
 
 if __name__ == "__main__":
