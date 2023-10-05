@@ -33,10 +33,10 @@ def write_to_notepad(df:pd.DataFrame):
     pywinauto.application.Application().connect(handle=window._hWnd).top_window().set_focus()
     print('typing...')
     pyautogui.typewrite(df.head(3).to_string())
-    sleep(5)
+    sleep(8)
     
 @task
-def delete_if_exists(file:str=r"C:\Users\gabri\OneDrive\Documents\test.txt"):
+def delete_if_exists(file:str=r"C:\Users\gabri\Documents\test.txt"):
     if os.path.isfile(file):
         os.remove(file)
         return 'File Deleted!' 
@@ -53,9 +53,9 @@ def save_notepad():
     pyautogui.moveTo(window.left +25,window.top +125)
     pyautogui.click()
     pyautogui.typewrite('test.txt')
-    sleep(0.5)
+    sleep(3)
     pyautogui.press('enter') 
-    sleep(0.5)
+    sleep(3)
     window.close()
     sleep(1)
 
