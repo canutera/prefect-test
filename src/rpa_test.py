@@ -9,7 +9,7 @@ from time import sleep
 
 @task
 def get_borders_list():
-    driver = webdriver.Chrome()
+    driver = webdriver.Edge()
 
     driver.get("https://en.wikipedia.org/wiki/List_of_countries_and_territories_by_number_of_land_borders")
     print('getting table from wikipedia...')
