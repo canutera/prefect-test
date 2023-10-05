@@ -9,7 +9,7 @@ from time import sleep
 
 @task
 def get_borders_list():
-    driver = webdriver.Edge()
+    driver = webdriver.Chrome()
 
     driver.get("https://en.wikipedia.org/wiki/List_of_countries_and_territories_by_number_of_land_borders")
     print('getting table from wikipedia...')
@@ -65,7 +65,7 @@ def main():
     write_to_notepad(df)
     delete_if_exists()
     save_notepad()
-    a = pd.read_fwf(rf"C:\Users\{os.getlogin()}\OneDrive\Documents\test.txt")
+    a = pd.read_fwf(rf"C:\Users\{os.getlogin()}\Documents\test.txt")
     print('shape:', a.shape)
     print('columns:', len(a.columns))
 
