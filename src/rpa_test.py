@@ -65,7 +65,7 @@ def main():
     write_to_notepad(df)
     delete_if_exists()
     save_notepad()
-    a = pd.read_fwf(r"C:\Users\gabri\OneDrive\Documents\test.txt")
+    a = pd.read_fwf(rf"C:\Users\{os.getlogin()}\OneDrive\Documents\test.txt")
     print('shape:', a.shape)
     print('columns:', len(a.columns))
 
