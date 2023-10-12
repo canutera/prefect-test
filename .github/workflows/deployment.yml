@@ -32,7 +32,7 @@ jobs:
       
       - name: Config Prefect
         run: |
-             poetry run prefect config set PREFECT_SERVER_API_HOST=192.168.0.2:4200
+             poetry run prefect config set PREFECT_SERVER_API_HOST=192.168.0.2
              poetry run prefect config set PREFECT_API_URL=http://192.168.0.2:4200/api 
 
       - name: Create Prefect Service
@@ -43,7 +43,7 @@ jobs:
         run: |
           sc start PrefectServer
       - name: start agent
-        run: poetry run prefect agent start --pool "default-agent-pool"
+        run: poetry run prefect agent start --pool "default-agent-pool" "&"
 
       - name: start server
-        run: start cmd.exe /k poetry run prefect start server
+        run: start cmd.exe /k poetry run prefect start server "&"
