@@ -35,15 +35,8 @@ jobs:
              poetry run prefect config set PREFECT_SERVER_API_HOST=192.168.0.2
              poetry run prefect config set PREFECT_API_URL=http://192.168.0.2:4200/api 
 
-      - name: Create Prefect Service
-        run: |
-          powershell -ExecutionPolicy Bypass -File .\create_prefect_service.ps1
-    
-      - name: Start Prefect Server
-        run: |
-          sc start PrefectServer
-      - name: start agent
-        run: poetry run prefect agent start --pool "default-agent-pool" "&"
-
       - name: start server
-        run: start cmd.exe /k poetry run prefect start server "&"
+        run: start_prefect_server.bat
+        
+      - name: start agent
+        run: start_prefect_agent.bat
