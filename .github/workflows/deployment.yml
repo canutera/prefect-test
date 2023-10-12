@@ -36,7 +36,9 @@ jobs:
              poetry run prefect config set PREFECT_API_URL=http://192.168.0.2:4200/api 
 
       - name: start server
-        run: $(pwd)\start_prefect_server.bat
+        run: |
+          pwd
+          .\start_prefect_server.bat
         
       - name: start agent
-        run: $(pwd)\start_prefect_agent.bat
+        run: .\start_prefect_agent.bat
