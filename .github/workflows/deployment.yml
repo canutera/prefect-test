@@ -28,6 +28,7 @@ jobs:
         run:  |
               poetry shell
               poetry install
+              pip -V
       
       - name: Config Prefect
         run: |
