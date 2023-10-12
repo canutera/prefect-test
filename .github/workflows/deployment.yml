@@ -1,0 +1,42 @@
+name: Deployment
+
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+  workflow-dispatch:
+
+jobs:
+  deployment:
+    runs-on: self-hosted
+    environment: production
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      
+      - name: Python Version
+        run: python --version 
+      
+      - name: check if poetry is installed
+        run: pip install poetry
+
+      - name: install dependencies
+        run:  |
+              poetry shell
+              activate
+              poetry install
+      
+      - name: Config Prefect
+        run: |
+             prefect config set PREFECT_SERVER_API_HOST=192.168.0.2:4200
+             prefect config set PREFECT_API_URL=http://192.168.0.2:4200/api 
+      
+      - name: start agent
+        run: prefect agent start --pool "default-agent-pool"
+
+      - name: start server
+        run: start cmd.exe /k prefect start server
