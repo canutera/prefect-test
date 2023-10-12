@@ -37,7 +37,7 @@ jobs:
 
       - name: Create Prefect Service
         run: |
-          powershell -ExecutionPolicy Bypass -File create_prefect_service.ps1
+          powershell -ExecutionPolicy Bypass -File .\create_prefect_service.ps1
     
       - name: Start Prefect Server
         run: |
