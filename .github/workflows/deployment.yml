@@ -27,7 +27,6 @@ jobs:
       - name: install dependencies
         run:  |
               poetry shell
-              activate
               poetry install
       
       - name: Config Prefect
