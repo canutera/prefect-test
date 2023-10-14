@@ -37,8 +37,8 @@ jobs:
 
       - name: start server
         run: |
-          pwd
-          .\start_prefect_server.bat
+          echo $(pwd)
+          poetry run start \B start_prefect_server.bat && exit
         
       - name: start agent
-        run: .\start_prefect_agent.bat
+        run: poetry run start \B start_prefect_agent.bat.bat && exit
