@@ -37,8 +37,9 @@ jobs:
 
       - name: start server
         run: |
-          echo $(pwd)
-          poetry run start \B start_prefect_server.bat && exit
+          Start-Process -NoNewWindow -FilePath "poetry" -ArgumentList "run start_prefect_server.bat"
+
+          
         
       - name: start agent
-        run: poetry run start \B start_prefect_agent.bat.bat && exit
+        run: Start-Process -NoNewWindow -FilePath "poetry" -ArgumentList "run start_prefect_server.bat"
